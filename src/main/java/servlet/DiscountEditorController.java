@@ -33,13 +33,13 @@ public class DiscountEditorController extends HttpServlet {
 		String action = request.getParameter("action");
 		action = (action == null) ? "" : action; // Pour le switch qui n'aime pas les null
 		String code = request.getParameter("code");
-		String taux = request.getParameter("taux");
+		String rate = request.getParameter("rate");
 		try {
 			DAO dao = new DAO(DataSourceFactory.getDataSource());
 			request.setAttribute("codes", dao.allCodes());			
 			switch (action) {
 				case "ADD": // Requête d'ajout (vient du formulaire de saisie)
-					dao.addDiscountCode(code, Float.valueOf(taux));
+					dao.addDiscountCode(code, Float.valueOf(rate));
 					request.setAttribute("message", "Code " + code + " Ajouté");
 					request.setAttribute("codes", dao.allCodes());								
 					break;

@@ -32,11 +32,11 @@ public class AjoutCode extends HttpServlet {
         // Créér le DAO avec sa source de données
         DAO dao = new DAO(DataSourceFactory.getDataSource());
         String code = request.getParameter("code");
-        String taux = request.getParameter("taux");
+        String rate = request.getParameter("rate");
         // Properties est une Map<clé, valeur> pratique pour générer du JSON
         Properties resultat = new Properties();
         try {
-            resultat.put("records", dao.addDiscountCode(code, Float.valueOf(taux)));
+            resultat.put("records", dao.addDiscountCode(code, Float.valueOf(rate)));
         } catch (SQLException ex) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             resultat.put("records", Collections.EMPTY_LIST);

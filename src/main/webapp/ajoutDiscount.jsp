@@ -43,7 +43,7 @@
 		<h1>Edition des taux de remise</h1>
 		<form method='GET'>
 			Code : <input name="code" size="1" maxlength="1" pattern="[A-Z]{1}+" title="Une lettre en MAJUSCULES"><br/>
-			Taux : <input name="taux" type="number" step="0.01" min="0.0" max="99.99" size="5"><br/>
+			Taux : <input name="rate" type="number" step="0.01" min="0.0" max="99.99" size="5"><br/>
 			<input type="hidden" name="action" value="ADD">
 			<input type="submit" value="Ajouter">
 		</form>
@@ -56,7 +56,7 @@
 			<c:forEach var="record" items="${codes}">
 				<form class="tr" method="get">
 					<div class="td"><input type="text" name="code" value="${record.discountCode}" readonly/></div>
-					<div class="td"><input name="taux" type="number" step="0.01" min="0.0" max="99.99" size="5" value="${record.rate}"/></div>
+					<div class="td"><input name="rate" type="number" step="0.01" min="0.0" max="99.99" size="5" value="${record.rate}"/></div>
 					<div class="td"><input type="submit" name="action" value="DELETE"/></div>
 				</form>	  		    
 			</c:forEach>  

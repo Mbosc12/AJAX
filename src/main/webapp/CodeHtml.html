@@ -80,18 +80,19 @@
 		<h1>Cette page utilise les servlets suivantes :</h1>
             <ul>
                 <li><a href="CodeJson" target="_blank">Servlet CodeJson : liste les codes</a></li>
-                <li><a href="AjoutCode?code=D&taux=12.34" target="_blank">Servlet AjoutCode : ajoute un code</a></li>
+                <li><a href="AjoutCode?code=D&rate=12.34" target="_blank">Servlet AjoutCode : ajoute un code</a></li>
                 <li><a href="SupprimeCode?code=D" target="_blank">Servlet SupprimeCode : supprime un code</a></li>
             </ul>
             La page utilise également le <a href="https://mustache.github.io/" target="_blank">moteur de template Mustache</a> pour formatter le résultat.<br>
             <hr>
         </div>
+        
         <!-- On montre le formulaire de saisie -->
         <h1>Edition des taux de remise (AJAX)</h1>
         <form id="codeForm" onsubmit="event.preventDefault(); addCode();">
             <fieldset><legend>Saisie d'un taux de remise</legend>
             Code : <input id="code" name="code" required size="1" maxlength="1" pattern="[A-Z]{1,1}" title="Une lettre en MAJUSCULES"><br/>
-            Taux : <input id="taux" name="taux" type="number" step="0.01" min="0.0" max="99.99" size="5"><br/>
+            Taux : <input id="rate" name="rate" type="number" step="0.01" min="0.0" max="99.99" size="5"><br/>
             <input type="submit" value="Ajouter">
             </fieldset>
         </form>
@@ -100,12 +101,12 @@
 
         <!-- Le template qui sert à formatter la liste des codes -->
         <script id="codesTemplate" type="text/template">
-            <TABLE>
+            <TABLE style="padding: 3px; width: 30%;" border="1px">
             <tr><th>Code</th><th>Taux</th><th>Action</th></tr>
             {{! Pour chaque enregistrement }}
             {{#records}}
                 {{! Une ligne dans la table }}
-                <TR><TD>{{discountCode}}</TD><TD>{{rate}}</TD><TD><button onclick="deleteCode('{{discountCode}}')">Supprimer</button></TD></TR>
+                <TR><TD style="text-align: center; background-color: #ccc;">{{discountCode}}</TD><TD style="text-align: center; background-color: #ccc;">{{rate}}</TD><TD style="text-align: center; background-color: #ccc;"><button onclick="deleteCode('{{discountCode}}')">Supprimer</button></TD></TR>
             {{/records}}
             </TABLE>
         </script>
